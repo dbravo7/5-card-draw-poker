@@ -1,7 +1,7 @@
 require 'poker'
 
 # Classes you will want
-  # Card : value, revealed=false, to_s
+  # Card : 
       #symbol 
   # Deck : shuffle, deal 
   # Hand
@@ -22,5 +22,9 @@ require 'poker'
 
 # Deck
   # create the deck
+    # 2-A and four suits 
+    # create single array with all cards 
+    # shuffle the cards 
+    # deal 
   # for each card initialize card
   # get the value and symbol from deck
