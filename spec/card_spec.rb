@@ -46,11 +46,41 @@ describe Deck do
   end 
 
   describe '#shuffle' do 
-    let(:deck) { double("deck") }
+    let(:cards) { double("cards") }
     
     it "shuffles the deck" do 
-      expect(deck).to receive(:shuffle)
-      game.shuffle
+      expect(cards).to receive(:shuffle)
+      game.shuffle(cards)
     end 
   end 
+
+  describe '#start_game_deal' do 
+    before(:each) do 
+      @player_hash = { 1=>[], 2=>[] }
+    end 
+    # context 'no numbers are given' do 
+    #   it 'does not raise an error' do 
+    #     expect { game.deal(@player_hash) }.to_not raise_error
+    #   end 
+    # end 
+    context 'Start of game' do 
+      it 'deals five cards to each player' do 
+        expect(game.start_game_deal(@player_hash)).to eq(@player_hash)
+        expect(@player_hash[1].count).to eq(5) 
+        expect(@player_hash[2].count).to eq(5) 
+      end 
+    end 
+
+    describe '#deal' do 
+      it 'deals to the player the number of cards requested' do
+        game.deal(@player_hash[1], 3)
+        expect(@player_hash[1].length).to eq(3)
+      end 
+    end 
+
+  end 
 end 
+
+# if game_start = true
+      # one card at a time up to 5 cards
+      # raise error if 

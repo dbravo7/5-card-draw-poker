@@ -1,3 +1,4 @@
+require 'byebug'
 require_relative 'card'
 
 class Deck
@@ -5,8 +6,8 @@ class Deck
 
   def initialize 
     @deck = []
-    # form_deck
-    # shuffle 
+    form_deck
+    shuffle 
   end 
 
   def form_deck
@@ -28,7 +29,20 @@ class Deck
     end 
   end 
 
-  def shuffle 
-    @deck.shuffle
+  def shuffle(deck) 
+    deck.shuffle
+  end 
+
+  def deal(player, num)
+    num.times {player << deck.pop}
+  end 
+
+  def start_game_deal(players)
+    deal = 1
+    while deal <= 5
+      (1..players.length).each {|i| players[i] << deck.pop}
+      deal += 1
+    end 
+    players 
   end 
 end 
