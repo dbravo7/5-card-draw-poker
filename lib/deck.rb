@@ -7,7 +7,7 @@ class Deck
   def initialize 
     @deck = []
     form_deck
-    shuffle 
+    shuffle(@deck) 
   end 
 
   def form_deck
