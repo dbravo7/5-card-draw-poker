@@ -136,7 +136,9 @@ describe Hand do
   describe '#straight_flush?' do 
 
     it 'calls #straight? and #flush?' do 
-      expect(game).to_receive(:straight?).and_return(true)
+      expect(game).to receive(:straight?).and_return(true)
+      allow(game).to receive(:flush?).and_return(false)
+      game.straight_flush?([9,10,:J,:Q,:K])
     end 
   end 
 end 

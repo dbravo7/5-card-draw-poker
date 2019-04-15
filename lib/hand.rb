@@ -115,13 +115,10 @@ class Hand
   def flush?(cards)
     cards.all? {|card| card == cards[0]}
   end 
-# put hands in hash-whoever has the highest key, wins 
 
-  # def hand(player)
-  #   player.each do |card|
-  #     has_a_pair?(player, card)
-  #   end 
-  # end 
+  def straight_flush?(cards)
+    straight?(cards) && flush?(cards)
+  end 
 
 
 end 
