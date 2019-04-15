@@ -2,7 +2,6 @@ require 'hand'
 
 describe Hand do 
   subject(:game) { Hand.new }
-  # let(:cards) { [2,3,4,5,6,7,8,9,10,:J,:Q,:K,:A]}
   let(:players) { player_hash = {1=>[5,9,10,:K,:Q], 2=>[:J,3,5,:A,8]} }
   let(:hand_1)  { [:K,:K,3,3,3] }
   let(:hand_2) { [4,4,:A,9,9] }
@@ -139,6 +138,16 @@ describe Hand do
       expect(game).to receive(:straight?).and_return(true)
       allow(game).to receive(:flush?).and_return(false)
       game.straight_flush?([9,10,:J,:Q,:K])
+    end 
+  end 
+
+  describe '#winner' do 
+    let(:players_1) { player_hash = {1=>[:K,:K,:K,:K], 2=>[3,3,3,:A,:A]} }
+    let(:players_2) { player_hash = {1=>[5,5,9,9], 2=>[3,3,:Q,:Q]} }
+
+    it 'returns which player won the round' do 
+      expect(game.winner(players_1)).to eq(2)
+      expect(game.winner(players_2)).to eq(2)
     end 
   end 
 end 

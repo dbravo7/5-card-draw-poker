@@ -85,7 +85,7 @@ class Hand
     if two_pairs?(cards)
       return current_hand.all? {|card| card == current_hand[0]}
     end 
-    pair?(cards)
+    false 
   end 
   
   def full_house?(cards)
@@ -93,7 +93,7 @@ class Hand
       adjusted_hand = adjust_hand(cards)
       return pair?(adjusted_hand)
     end 
-    pair?(cards)
+    false 
   end 
 
   def straight?(cards)
@@ -120,5 +120,14 @@ class Hand
     straight?(cards) && flush?(cards)
   end 
 
+  def winner(players)
+    # one player's hash is longer than the other's, the first player wins
+    # add value variable that keeps track of hand
+      #if the value variable is equal then check high card
+        # for now, don't worry about which group of high card you're checking
+    # comparing current_hand 
+    # find out which hand the players have
+      #compare which one has the highest hand 
+  end 
 
 end 
